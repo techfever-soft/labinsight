@@ -1,0 +1,1 @@
+export type LabInsightArgType = "full" | "dependencies" | "basic" | "deep";

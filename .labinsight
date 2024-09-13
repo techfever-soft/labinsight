@@ -1,0 +1,156 @@
+{
+  "$schema": "https://lab-insight.web.app/config.schema.json",
+  "version": 2,
+  "projectName": "@techfever/labinsight",
+  "projectType": "none",
+  "engine": "none",
+  "environment": "development",
+  "linting": "none",
+  "ignoredDirectories": [
+    "node_modules",
+    ".git",
+    "dist",
+    "reports",
+    "rules",
+    "build",
+    "out",
+    "temp",
+    "tmp",
+    "reports",
+    "logs"
+  ],
+  "ignoredFiles": [
+    ".labinsight",
+    ".gitignore",
+    ".npmignore",
+    ".prettierignore",
+    ".eslintignore",
+    "package-lock.json",
+    "package.json",
+    "tsconfig.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENCE",
+    "ROADMAP.md"
+  ],
+  "customRules": {},
+  "rules": {
+    "ts.max-lines": {
+      "severity": "error",
+      "options": {
+        "limit": 100
+      }
+    },
+    "ts.max-method-lines": {
+      "severity": "warning",
+      "options": {
+        "limit": 25
+      }
+    },
+    "ts.max-array-length": {
+      "severity": "error",
+      "options": {
+        "limit": 100
+      }
+    },
+    "ts.require-method-description": {
+      "severity": "warning"
+    },
+    "ts.require-class-description": {
+      "severity": "warning"
+    },
+    "ts.require-interface-description": {
+      "severity": "warning"
+    },
+    "ts.require-try-catch": {
+      "severity": "error"
+    },
+    "ts.casing-function": {
+      "severity": "error",
+      "options": {
+        "casing": "camelCase"
+      }
+    },
+    "ts.casing-class": {
+      "severity": "error",
+      "options": {
+        "casing": "pascalCase"
+      }
+    },
+    "ts.casing-parameter": {
+      "severity": "error",
+      "options": {
+        "casing": "camelCase"
+      }
+    },
+    "ts.casing-method": {
+      "severity": "error",
+      "options": {
+        "casing": "camelCase"
+      }
+    },
+    "ts.casing-property": {
+      "severity": "error",
+      "options": {
+        "casing": "camelCase"
+      }
+    },
+    "ts.casing-type": {
+      "severity": "error",
+      "options": {
+        "casing": "pascalCase"
+      }
+    },
+    "ts.casing-interface": {
+      "severity": "error",
+      "options": {
+        "casing": "pascalCase"
+      }
+    },
+    "ts.casing-enum": {
+      "severity": "error",
+      "options": {
+        "casing": "pascalCase"
+      }
+    },
+    "ts.limit-recursion-depth": {
+      "severity": "error",
+      "options": {
+        "limit": 3
+      }
+    },
+    "ts.no-global-state": {
+      "severity": "error"
+    },
+    "js.max-lines": {
+      "severity": "error",
+      "options": {
+        "limit": 100
+      }
+    },
+    "js.require-method-description": {
+      "severity": "warning"
+    },
+    "js.require-try-catch": {
+      "severity": "error"
+    },
+    "js.casing-class": {
+      "severity": "error",
+      "options": {
+        "casing": "pascalCase"
+      }
+    },
+    "js.casing-parameter": {
+      "severity": "error",
+      "options": {
+        "casing": "camelCase"
+      }
+    },
+    "js.casing-function": {
+      "severity": "error",
+      "options": {
+        "casing": "camelCase"
+      }
+    }
+  }
+}

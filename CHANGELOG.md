@@ -1,0 +1,77 @@
+![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
+
+## Version 0.0.8 - 2024-09-13
+
+### New Features
+
+- **JavaScript Support**: Added support for JavaScript analysis, enabling rules and analyzers to parse and analyze JavaScript files seamlessly alongside TypeScript.
+- **Typed Declarations**: Added TypeScript types and declarations throughout the project, making it easier for developers to import and use Labinsight in their own projects.
+- **Improved Basic & Deep Analysis**: Refactored the `BasicAnalyzer` and `DeepAnalyzer` to work with the new language detection system, ensuring that analysis is performed accurately based on the file's language.
+- **JSON Report Enhancement**: JSON reports are now more consistent and modular, with language-specific data available in each report.
+
+### Improvements
+
+- **Cleaner Architecture**: Further modularized the file and directory structure, making it easier to extend and support more languages in the future.
+- **Optimized File Handling**: Improved how rules and analyzers are applied based on file types, ensuring better performance and scalability.
+
+### Fixed Issues
+
+- **Dependency Analyzer Integration**: Fixed an issue where the Dependency Analyzer was not being utilized correctly, leading to incomplete dependency checks.
+- **Empty Set Issue**: Resolved a problem where empty arrays were being added to a `Set`, ensuring accurate and efficient set operations.
+
+## Version 0.0.7 - 2024-09-11
+
+### New Features
+
+- **JSON reports**: Introduced JSON report generation. Reports are now automatically saved in the ./reports directory.
+- **Keep reports**: Added the `labinsight analyze -k` or `labinsight analyze --keep` option to retain previous reports in the folder, preventing them from being overwritten.
+
+### Improvements
+
+- **Async analysis**: Fixed the overlap between basic and deep analyzers by properly handling asynchronous execution.
+- **Redundant code**: Removed redundant code in the analyzers and file management for a more optimized codebase.
+- **Removed options** Removed deprecated configurations (`config`, `casing`, `decorators`) in favor of the new `rules` and `customRules` system for a cleaner, more flexible configuration.
+
+## Version 0.0.6 - 2024-09-11
+
+### Improvements
+
+- **CLI patch**: Fixed the "bin" field in package.json to ensure the CLI commands work properly !
+- **Improved structure**: Refactored the project structure for better modularity, facilitating the addition of more languages in the future.
+
+## Version 0.0.5 - 2024-09-11
+
+## Version 0.0.4 - 2024-09-11
+
+### New Features
+
+- **New command**: Added a new command to generate a custom rule file.
+- **Better reports**: Improved reporting for deep analysis, providing more detailed insights and metrics.
+- **Type argument**: Added `labinsight analyze --type=<full, dependencies, basic, deep>` argument instead of interactive selection.
+- **Silent argument**: Added `labinsight analyze -s` or `analyze --silent` to suppress unessential messages during the analysis.
+
+### Improvements
+
+- **Improved custom rules**: Refactored to make custom rules more modular, enabling easier management via dedicated files. [See docs/customRules.md](https://github.com/techfever-soft/labinsight/blob/main/docs/customRules.md)
+
+## Version 0.0.3 - 2024-09-10
+
+### New Features
+
+- **Custom Rules**: Added support for custom rules in the `.labinsight` configuration file. Users can now define and customize rules specific to their project needs.
+- **JSON Schema**: Introduced a JSON schema for the `.labinsight` configuration file, improving validation and helping users understand the expected structure.
+- **Ignored Files and Directories**: Added support for specifying ignored files and directories in the `.labinsight` configuration. This allows users to exclude specific files or directories from the analysis.
+
+### Improvements
+
+- **Initialization Patch**: Fixed issues related to the initialization of the `.labinsight` configuration file. The initialization process is now more reliable and works across different project structures.
+- **Rule System Modularization**: Began modularizing the rule system to support multiple languages in future updates. This improves scalability and prepares Labinsight for analyzing more than just JavaScript/TypeScript projects.
+
+### Enhancements to Rule Handling
+
+- **Improved Rule Flexibility**: Simplified the structure for adding rules to make them easier to use and include in projects. This provides a better developer experience when configuring custom rules.
+- **Predefined Ignored Files/Directories**: Added common ignored files and directories to the configuration (e.g., `.git`, `node_modules`, `dist`) to streamline project setup.
+
+### Other
+
+- Added this changelog to track future updates and improvements.

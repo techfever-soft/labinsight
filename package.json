@@ -1,0 +1,57 @@
+{
+  "name": "@techfever/labinsight",
+  "description": "A smart code analysis tool for all your project needs",
+  "version": "0.0.8",
+  "main": "dist/bin/labinsight.js",
+  "private": false,
+  "bin": {
+    "labinsight": "dist/bin/labinsight.js"
+  },
+  "types": "dist/types/src/index.d.ts",
+  "scripts": {
+    "build": "tsc && tsc-alias && node dist/bin/labinsight.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "_moduleAliases": {
+    "@core": "./dist/src/core",
+    "@interfaces": "./dist/src/interfaces",
+    "@utils": "./dist/src/utils",
+    "@config": "./dist/src/config",
+    "@lab-types": "./dist/src/types",
+    "@loaders": "./dist/src/loaders"
+  },
+  "keywords": [
+    "cli",
+    "analysis",
+    "linting",
+    "labinsight",
+    "code analysis",
+    "code review",
+    "code quality",
+    "tool",
+    "report",
+    "codebase",
+    "automation"
+  ],
+  "author": "TechFever",
+  "license": "ISC",
+  "homepage": "https://lab-insight.web.app",
+  "dependencies": {
+    "@inquirer/prompts": "^5.5.0",
+    "@types/chalk": "^0.4.12",
+    "@types/commander": "^2.12.0",
+    "@types/espree": "^10.1.0",
+    "@types/node": "^22.5.4",
+    "acorn-walk": "^8.3.4",
+    "chalk": "^4.1.2",
+    "module-alias": "^2.2.3",
+    "npm-registry-fetch": "^17.1.0",
+    "ora": "^5.4.1",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/module-alias": "^2.0.4",
+    "@types/npm-registry-fetch": "^8.0.7",
+    "tsc-alias": "^1.8.10"
+  }
+}
