@@ -1,6 +1,5 @@
 import {
   LabInsightRule,
-  LabInsightRuleConfig,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
 } from "@interfaces/rule.interface";
@@ -53,20 +52,18 @@ export class TSRequireClassDescriptionRule implements LabInsightRule {
         const hasComment = this.hasDescriptionComment(node, sourceFile);
 
         if (!hasComment) {
-          const { line } = sourceFile.getLineAndCharacterOfPosition(
-            node.getStart()
-          );
+          const { line } = sourceFile.getLineAndCharacterOfPosition(node.getStart());
           response = {
             severity: this.optionsMap.severity,
             message: `Class '${className}' is missing a JSDoc description.`,
             path: filePath,
-            line,
+            line: line + 1,
           };
         }
       }
     };
 
-    sourceFile.forEachChild(visitNode);
+    ts.forEachChild(sourceFile, visitNode);
 
     return response;
   }
@@ -77,27 +74,19 @@ export class TSRequireClassDescriptionRule implements LabInsightRule {
    * @param sourceFile ts.SourceFile
    * @returns boolean
    */
-
   private hasDescriptionComment(
     node: ts.Node,
     sourceFile: ts.SourceFile
   ): boolean {
-    const { line } = sourceFile.getLineAndCharacterOfPosition(node.getStart());
-    const comments = ts.getLeadingCommentRanges(
-      sourceFile.text,
-      node.getFullStart() + 1
-    );
-    if (!comments) {
-      return false;
+    const comments = ts.getLeadingCommentRanges(sourceFile.getFullText(), node.getFullStart());
+
+    if (comments) {
+      return comments.some((comment) => {
+        const commentText = sourceFile.getFullText().slice(comment.pos, comment.end).trim();
+        return commentText.startsWith("/**");
+      });
     }
 
-    const comment = comments.find((comment) => {
-      const { line: commentLine } = sourceFile.getLineAndCharacterOfPosition(
-        comment.pos
-      );
-      return commentLine === line - 1;
-    });
-
-    return !!comment;
+    return false;
   }
 }

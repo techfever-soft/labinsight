@@ -6,12 +6,11 @@ import {
 import * as acorn from "acorn";
 import * as walk from "acorn-walk";
 
-
 export class JSMaxMethodLinesRule implements LabInsightRule {
   private maxLines: number;
 
   constructor(options: LabInsightRuleOptions) {
-    this.maxLines = options.options?.limit || 200; 
+    this.maxLines = options.options?.limit || 200;
   }
 
   public async apply(
@@ -21,17 +20,16 @@ export class JSMaxMethodLinesRule implements LabInsightRule {
     const ast = acorn.parse(fileContent, {
       ecmaVersion: "latest",
       sourceType: "module",
-      locations: true, 
+      locations: true,
     });
 
     let response: LabInsightRuleResponse | null = null;
 
     const visitNode = (node: any): void => {
+      // Vérifie si le nœud est une méthode dans une classe ou un objet
       if (
-        node.type === "FunctionDeclaration" ||
-        node.type === "FunctionExpression" ||
-        node.type === "ArrowFunctionExpression" ||
-        node.type === "MethodDefinition"
+        node.type === "MethodDefinition" || 
+        (node.type === "Property" && node.value.type === "FunctionExpression")
       ) {
         const startLine = node.loc.start.line;
         const endLine = node.loc.end.line;
@@ -46,17 +44,11 @@ export class JSMaxMethodLinesRule implements LabInsightRule {
           };
         }
       }
-
-      if (node.body && node.body.type === "BlockStatement") {
-        node.body.body.forEach((childNode: any) => visitNode(childNode));
-      }
     };
 
     walk.simple(ast, {
-      FunctionDeclaration: visitNode,
-      FunctionExpression: visitNode,
-      ArrowFunctionExpression: visitNode,
       MethodDefinition: visitNode,
+      Property: visitNode, // Pour les méthodes dans les objets littéraux
     });
 
     return response;

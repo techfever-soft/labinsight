@@ -52,20 +52,18 @@ export class TSRequireInterfaceDescriptionRule implements LabInsightRule {
         const hasComment = this.hasDescriptionComment(node, sourceFile);
 
         if (!hasComment) {
-          const { line } = sourceFile.getLineAndCharacterOfPosition(
-            node.getStart()
-          );
+          const { line } = sourceFile.getLineAndCharacterOfPosition(node.getStart());
           response = {
             severity: this.options.severity,
             message: `Interface '${interfaceName}' is missing a JSDoc description.`,
             path: filePath,
-            line,
+            line: line + 1,
           };
         }
       }
     };
 
-    sourceFile.forEachChild(visitNode);
+    ts.forEachChild(sourceFile, visitNode);
 
     return response;
   }
@@ -80,31 +78,15 @@ export class TSRequireInterfaceDescriptionRule implements LabInsightRule {
     node: ts.Node,
     sourceFile: ts.SourceFile
   ): boolean {
-    const { line } = sourceFile.getLineAndCharacterOfPosition(node.getStart());
-    const comment = this.getCommentBeforeLine(line, sourceFile);
+    const comments = ts.getLeadingCommentRanges(sourceFile.getFullText(), node.getFullStart());
 
-    return comment !== null && comment.includes("/**");
-  }
-
-  /**
-   * Gets the comment before a line
-   * @param line number
-   * @param sourceFile ts.SourceFile
-   * @returns string | null
-   */
-  private getCommentBeforeLine(
-    line: number,
-    sourceFile: ts.SourceFile
-  ): string | null {
-    const text = sourceFile.getFullText();
-    const lines = text.split("\n");
-
-    for (let i = line - 1; i >= 0; i--) {
-      if (lines[i].trim().startsWith("/**")) {
-        return lines[i].trim();
-      }
+    if (comments) {
+      return comments.some((comment) => {
+        const commentText = sourceFile.getFullText().slice(comment.pos, comment.end).trim();
+        return commentText.startsWith("/**");
+      });
     }
 
-    return null;
+    return false;
   }
 }

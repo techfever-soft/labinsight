@@ -2,16 +2,15 @@
 
 ## Writing custom rules
 
-### Generate a rule
+Rules must be written in JavaScript and can be placed anywhere you want, because you must provide the path in the config.
 
-You can generate a new rule file using `labinsight generate-rule` (interactive prompt).
-Else use the template below :
+You can use the template below :
 
 ```javascript
 class NoConsoleLogRule {
-  constructor(severity, options) {
-    this.severity = severity;
-    this.options = options;
+  constructor(config) {
+    this.severity = config.severity;
+    this.options = config.options;
   }
 
   apply(fileContent, filePath) {
@@ -21,10 +20,11 @@ class NoConsoleLogRule {
 
     if (lineIndex !== -1) {
       return {
+        path: filePath,
         line: lineIndex + 1,
         column: 0,
         message: this.options.message,
-        severity: this.severity
+        severity: this.severity,
       };
     }
 
@@ -47,11 +47,12 @@ You can now add your custom rule to the `.labinsight` file :
   "version": 2,
   // ...
   "customRules": {
-    "noConsoleLogTest": {
+    "js.whatever-rule": {
       "path": "./rules/customRule.js",
       "severity": "warning",
       "options": {
         "message": "console.log is not allowed ! (custom rule)"
+        // ... Your own options
       }
     }
   },

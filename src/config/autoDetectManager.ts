@@ -9,32 +9,176 @@ export class AutoDetectManager {
   private packageJson: { [key: string]: any };
 
   private defaultRules: LabInsightRuleConfig = {
-    "ts.max-lines": {
+    "py.require-function-description": {
+      severity: "error",
+    },
+    "py.require-class-description": {
+      severity: "error",
+    },
+    "py.casing-class": {
+      severity: "error",
+      options: {
+        casing: "PascalCase",
+      },
+    },
+    "py.casing-parameter": {
+      severity: "error",
+      options: {
+        casing: "snakeCase",
+      },
+    },
+    "py.casing-method": {
+      severity: "error",
+      options: {
+        casing: "snakeCase",
+      },
+    },
+    "py.casing-property": {
+      severity: "error",
+      options: {
+        casing: "snakeCase",
+      },
+    },
+    "py.casing-function": {
+      severity: "error",
+      options: {
+        casing: "snakeCase",
+      },
+    },
+    "py.max-file-lines": {
       severity: "error",
       options: {
         limit: 100,
       },
     },
-    "ts.max-method-lines": {
-      severity: "warning",
+    "py.max-function-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
+      },
+    },
+    "py.max-method-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
+      },
+    },
+    "js.max-lines": {
+      severity: "error",
+      options: {
+        limit: 100,
+      },
+    },
+    "js.max-method-lines": {
+      severity: "error",
       options: {
         limit: 25,
+      },
+    },
+    "js.max-function-lines": {
+      severity: "error",
+      options: {
+        limit: 25,
+      },
+    },
+    "js.max-array-length": {
+      severity: "error",
+      options: {
+        limit: 50,
+      },
+    },
+    "js.require-method-description": {
+      severity: "error",
+    },
+    "js.require-function-description": {
+      severity: "error",
+    },
+    "js.require-try-catch": {
+      severity: "error",
+    },
+    "js.casing-class": {
+      severity: "error",
+      options: {
+        casing: "pascalCase",
+      },
+    },
+    "js.casing-parameter": {
+      severity: "error",
+      options: {
+        casing: "camelCase",
+      },
+    },
+    "js.casing-method": {
+      severity: "error",
+      options: {
+        casing: "camelCase",
+      },
+    },
+    "js.casing-property": {
+      severity: "error",
+      options: {
+        casing: "camelCase",
+      },
+    },
+    "ts.max-file-lines": {
+      severity: "error",
+      options: {
+        limit: 100,
+      },
+    },
+    "ts.max-class-lines": {
+      severity: "error",
+      options: {
+        limit: 50,
+      },
+    },
+    "ts.max-method-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
+      },
+    },
+    "ts.max-function-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
+      },
+    },
+    "ts.max-interface-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
+      },
+    },
+    "ts.max-enum-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
+      },
+    },
+    "ts.max-type-lines": {
+      severity: "error",
+      options: {
+        limit: 10,
       },
     },
     "ts.max-array-length": {
       severity: "error",
       options: {
-        limit: 100,
+        limit: 50,
       },
     },
+    "ts.require-function-description": {
+      severity: "error",
+    },
     "ts.require-method-description": {
-      severity: "warning",
+      severity: "error",
     },
     "ts.require-class-description": {
-      severity: "warning",
+      severity: "error",
     },
     "ts.require-interface-description": {
-      severity: "warning",
+      severity: "error",
     },
     "ts.require-try-catch": {
       severity: "error",
@@ -87,45 +231,6 @@ export class AutoDetectManager {
         casing: "pascalCase",
       },
     },
-    "ts.limit-recursion-depth": {
-      severity: "error",
-      options: {
-        limit: 3,
-      },
-    },
-    "ts.no-global-state": {
-      severity: "error",
-    },
-    "js.max-lines": {
-      severity: "error",
-      options: {
-        limit: 100,
-      },
-    },
-    "js.require-method-description": {
-      severity: "warning",
-    },
-    "js.require-try-catch": {
-      severity: "error",
-    },
-    "js.casing-class": {
-      severity: "error",
-      options: {
-        casing: "pascalCase",
-      },
-    },
-    "js.casing-parameter": {
-      severity: "error",
-      options: {
-        casing: "camelCase",
-      },
-    },
-    "js.casing-function": {
-      severity: "error",
-      options: {
-        casing: "camelCase",
-      },
-    },
   };
 
   private defaultConfig: LabInsightConfig = {
@@ -140,6 +245,8 @@ export class AutoDetectManager {
       "node_modules",
       ".git",
       "dist",
+      "reports",
+      "rules",
       "build",
       "out",
       "temp",
@@ -160,6 +267,11 @@ export class AutoDetectManager {
       "CHANGELOG.md",
       "LICENCE",
       "ROADMAP.md",
+      "gulpfile.js",
+      "webpack.config.js",
+      "rollup.config.js",
+      "jest.config.js",
+      "gruntfile.js",
     ],
     customRules: [],
     rules: {

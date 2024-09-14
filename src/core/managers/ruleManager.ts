@@ -3,6 +3,7 @@ import { ConfigManager } from "@config/configManager";
 import { LabInsightRule } from "@interfaces/rule.interface";
 import { jsRules } from "@languages/js/jsRules";
 import { tsRules } from "@languages/ts/tsRules";
+import { pyRules } from "@languages/python/pyRules";
 
 export class RuleManager {
   private configManager: ConfigManager;
@@ -27,13 +28,15 @@ export class RuleManager {
 
     const isTypescript = this.isTypeScriptFile(filePath);
     const isJavascript = this.isJavaScriptFile(filePath);
+    const isPython = this.isPythonFile(filePath);
 
     configRules.forEach(([ruleName, ruleConfig]) => {
       const rule = this.createRule(
         ruleName,
         ruleConfig,
         isTypescript,
-        isJavascript
+        isJavascript,
+        isPython,
       );
       if (rule) {
         this.rules.add({ ruleName, rule });
@@ -51,11 +54,17 @@ export class RuleManager {
     return extension === ".js" || extension === ".jsx";
   }
 
+  private isPythonFile(filePath: string): boolean {
+    const extension = path.extname(filePath).toLowerCase();
+    return extension === ".py";
+  }
+
   private createRule(
     ruleName: string,
     ruleConfig: any,
     isTypescript: boolean,
-    isJavascript: boolean
+    isJavascript: boolean,
+    isPythonFile: boolean
   ): LabInsightRule | undefined {
     if (isTypescript && tsRules[ruleName]) {
       const RuleClass = tsRules[ruleName];
@@ -65,6 +74,11 @@ export class RuleManager {
       const RuleClass = jsRules[ruleName];
       return new RuleClass(ruleConfig);
     }
+    if (isPythonFile && pyRules[ruleName]) {
+      const RuleClass = pyRules[ruleName];
+      return new RuleClass(ruleConfig);
+    }
+    
     return undefined;
   }
 }

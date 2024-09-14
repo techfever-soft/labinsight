@@ -1,4 +1,3 @@
-import { ConfigManager } from "@config/configManager";
 import { FileManager } from "@core/managers/fileManager";
 import {
   IDirectoryAnalyzer,

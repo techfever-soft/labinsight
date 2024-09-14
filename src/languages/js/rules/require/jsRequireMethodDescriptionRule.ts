@@ -4,10 +4,11 @@ import {
   LabInsightRuleResponse,
 } from "@interfaces/rule.interface";
 import * as acorn from "acorn";
-
+import * as walk from "acorn-walk";
 
 export class JSRequireMethodDescriptionRule implements LabInsightRule {
   private options: LabInsightRuleOptions;
+  private comments: any[] = [];
 
   constructor(options: LabInsightRuleOptions) {
     this.options = options;
@@ -17,23 +18,34 @@ export class JSRequireMethodDescriptionRule implements LabInsightRule {
     fileContent: string,
     filePath: string
   ): Promise<LabInsightRuleResponse[]> {
+    // Parse the file content with comments
     const ast = acorn.parse(fileContent, {
       ecmaVersion: "latest",
       sourceType: "module",
-      locations: true, 
+      locations: true,
+      onComment: (block, text, start, end, startLoc, endLoc) => {
+        // Collect the comments for later use
+        this.comments.push({
+          type: block ? "Block" : "Line",
+          value: text,
+          start,
+          end,
+          loc: {
+            start: startLoc,
+            end: endLoc,
+          },
+        });
+      },
     });
 
     return this.checkMethodDescriptions(ast, filePath);
   }
 
-
   private checkMethodDescriptions(
     ast: acorn.Node,
     filePath: string
   ): LabInsightRuleResponse[] {
-    let responses: LabInsightRuleResponse[] = [];
-
-    const comments: any[] = (ast as any).comments || [];
+    const responses: LabInsightRuleResponse[] = [];
 
     const checkNode = (node: any) => {
       if (
@@ -45,7 +57,7 @@ export class JSRequireMethodDescriptionRule implements LabInsightRule {
         const methodName =
           node.id?.name || node.key?.name || "fonction anonyme";
 
-        const hasJSDoc = this.hasJSDocComment(node, comments);
+        const hasJSDoc = this.hasJSDocComment(node);
 
         if (!hasJSDoc) {
           responses.push({
@@ -57,21 +69,28 @@ export class JSRequireMethodDescriptionRule implements LabInsightRule {
         }
       }
 
+      // Recursively check the child nodes
       if (node.body && node.body.type === "BlockStatement") {
         node.body.body.forEach((childNode: any) => checkNode(childNode));
       }
     };
 
-    (ast as any).body.forEach((node: any) => checkNode(node));
+    // Traverse the AST
+    walk.simple(ast, {
+      FunctionDeclaration: checkNode,
+      FunctionExpression: checkNode,
+      ArrowFunctionExpression: checkNode,
+      MethodDefinition: checkNode,
+    });
 
     return responses;
   }
 
-
-  private hasJSDocComment(node: any, comments: any[]): boolean {
+  private hasJSDocComment(node: any): boolean {
     const nodeStartLine = node.loc.start.line;
 
-    return comments.some((comment: any) => {
+    // Check if there's a JSDoc comment just before the node
+    return this.comments.some((comment) => {
       return (
         comment.type === "Block" &&
         comment.value.trim().startsWith("*") &&

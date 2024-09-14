@@ -134,9 +134,6 @@ export class AnalyzeCommand {
    */
   private async startBasicAnalysis(): Promise<void> {
     try {
-      const basicAnalyzer = new BasicAnalyzer();
-      await basicAnalyzer.analyze();
-
       const reportFactory = new ReportFactory();
       await reportFactory.buildReport("basic");
 
@@ -154,9 +151,6 @@ export class AnalyzeCommand {
    */
   private async startDeepAnalysis(): Promise<void> {
     try {
-      const deepAnalyzer = new DeepAnalyzer();
-      await deepAnalyzer.analyze();
-
       const reportFactory = new ReportFactory();
       await reportFactory.buildReport("deep");
 

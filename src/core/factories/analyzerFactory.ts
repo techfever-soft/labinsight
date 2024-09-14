@@ -1,6 +1,7 @@
 import { IAnalyzer } from "@interfaces/analyzer.interface";
 import { JSDeepAnalyzer } from "@languages/js/analyzers/jsDeepAnalyzer";
 import { TSDeepAnalyzer } from "@languages/ts/analyzers/tsDeepAnalyzer";
+import chalk from "chalk";
 
 export class AnalyzerFactory {
   /**
@@ -17,6 +18,11 @@ export class AnalyzerFactory {
 
     if (extension === "ts" || extension === "tsx") {
       return new TSDeepAnalyzer();
+    }
+
+    if (extension === "py") {
+      console.log(chalk.red("Python deep analyzer not implemented yet"));
+      // return new PyDeepAnalyzer();
     }
 
     return null;

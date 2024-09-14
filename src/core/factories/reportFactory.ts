@@ -83,8 +83,15 @@ export class ReportFactory {
 
     let fileResultsFinal: LabInsightRuleResponse[] = [];
 
-    fileResults.forEach((fileResult) => {
-      fileResultsFinal.push(fileResult);
+    fileResults.forEach(async (fileResult) => {
+      const ansiRegex =
+        /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
+
+      const resettedMessage = fileResult.message.replace(ansiRegex, "");
+      fileResultsFinal.push({
+        ...fileResult,
+        message: resettedMessage,
+      });
     });
 
     this.basicReport = {

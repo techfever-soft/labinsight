@@ -5,6 +5,7 @@ import {
 } from "@interfaces/analyzer.interface";
 import { AnalyzerFactory } from "@core/factories/analyzerFactory";
 import { ComplexityLogger } from "@core/loggers/complexityLogger";
+import { ArgManager } from "@core/managers/argManager";
 
 export class DeepAnalyzer {
   private fileManager = new FileManager();
@@ -35,6 +36,15 @@ export class DeepAnalyzer {
     const files = this.fileManager.getDirectoryFiles(process.cwd());
 
     for (const file of files) {
+      const argManager = new ArgManager();
+      const onlyLanguage = argManager.getArgs().only;
+
+      if (onlyLanguage) {
+        if (!file.endsWith("." + onlyLanguage)) {
+          continue;
+        }
+      }
+
       await this.analyzeFile(file);
     }
   }

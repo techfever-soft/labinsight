@@ -5,11 +5,14 @@ import { LoggerUtil } from "@utils/loggerUtil";
 import chalk from "chalk";
 import { LabInsightRuleResponse } from "@interfaces/rule.interface";
 import { BasicLogger } from "../loggers/basicLogger";
+import { exec } from "child_process";
+import { ArgManager } from "@core/managers/argManager";
 
 export class BasicAnalyzer {
   private fileManager = new FileManager();
   private ruleManager = new RuleManager();
   private fileResults: Set<LabInsightRuleResponse> = new Set();
+  private pythonInstalled: boolean | null = null;
 
   /**
    * Gets the results of the analysis
@@ -27,8 +30,20 @@ export class BasicAnalyzer {
     const filePath = process.cwd();
     const files = this.fileManager.getDirectoryFiles(filePath);
 
+    this.pythonInstalled = await this.isPythonInstalled();
+
+    const argManager = new ArgManager();
+    const onlyLanguage = argManager.getArgs().only;
+
     for (const file of files) {
+      if (onlyLanguage) {
+        if (!file.endsWith("." + onlyLanguage)) {
+          continue;
+        }
+      }
+
       console.log(`📄 Analyzing file ${chalk.italic(chalk.grey(file))}`);
+
       await this.analyzeFile(file);
     }
   }
@@ -43,11 +58,30 @@ export class BasicAnalyzer {
       const rules = await this.getCombinedRules(file);
 
       for (const { ruleName, rule } of rules) {
+        if (!this.pythonInstalled && ruleName.startsWith("py.")) {
+          console.error(
+            `Python is required to run rule ${ruleName} but it is not installed. Skipping rule.`
+          );
+        }
+
         await this.applyRule(ruleName, rule, fileContent, file);
       }
     } catch (error) {
       console.error(`Error analyzing file ${file}:`, error);
     }
+  }
+
+  private async isPythonInstalled(): Promise<boolean> {
+    return new Promise((resolve) => {
+      const command = process.platform === "win32" ? "where" : "which";
+      exec(`${command} python`, (error, stdout, stderr) => {
+        if (error || stderr) {
+          resolve(false);
+        } else {
+          resolve(true);
+        }
+      });
+    });
   }
 
   /**

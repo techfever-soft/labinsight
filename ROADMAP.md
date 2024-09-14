@@ -18,8 +18,12 @@ Labinsight is continuously evolving to provide developers with deeper insights i
 - [x] Integration with a custom `.labinsight` configuration file
 - [x] Codebase-wide analysis using user-defined rules
 - [x] Deep code analysis to identify potential errors and optimizations
-- [ ] Report generation for results (JSON, Online, HTML, XML)
-- [ ] Basic support for TypeScript and JavaScript analysis
+- [x] Report generation for results 
+    - [x] JSON
+    - [ ] Online
+    - [ ] HTML
+    - [ ] XML
+- [x] Basic support for TypeScript and JavaScript analysis / optionally Python
 - [ ] Documentation generation for better integration with development processes
 
 ## Version 1.1.0 (Stability and Performance Enhancements)

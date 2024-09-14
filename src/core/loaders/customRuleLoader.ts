@@ -32,14 +32,10 @@ export class CustomRuleLoader {
             const RuleClass = await import(customRulePath).then(
               (module) => module.default
             );
-            const ruleInstance = new RuleClass((ruleConfig as any).options);
+
+            const ruleInstance = new RuleClass(ruleConfig);
 
             customRules.push(ruleInstance);
-
-            logger.log(
-              "info",
-              `Custom rule ${chalk.bold(ruleName)} loaded successfully`
-            );
           } else {
             logger.log(
               "error",

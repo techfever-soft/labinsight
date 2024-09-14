@@ -1,15 +1,16 @@
 import ts from "typescript";
 import {
   LabInsightRule,
+  LabInsightRuleOptions,
   LabInsightRuleResponse,
 } from "@interfaces/rule.interface";
 import chalk from "chalk";
 
-export class TSMaxLinesRule implements LabInsightRule {
-  private maxLines: number;
+export class TSMaxFileLinesRule implements LabInsightRule {
+  private limit: number;
 
-  constructor(options: any) {
-    this.maxLines = options.limit;
+  constructor(options: LabInsightRuleOptions) {
+    this.limit = options.options?.limit;
   }
 
   public async apply(
@@ -37,11 +38,11 @@ export class TSMaxLinesRule implements LabInsightRule {
 
     let response: LabInsightRuleResponse | null = null;
 
-    if (totalLines > this.maxLines) {
+    if (totalLines > this.limit) {
       response = {
         severity: "error",
         message: `File exceeds the maximum allowed lines of ${chalk.bold(
-          this.maxLines
+          this.limit
         )}. Total lines: ${totalLines}`,
         path: filePath,
         line: totalLines,

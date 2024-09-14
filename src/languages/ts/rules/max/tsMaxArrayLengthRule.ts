@@ -1,18 +1,15 @@
 import ts from "typescript";
 import {
   LabInsightRule,
+  LabInsightRuleOptions,
   LabInsightRuleResponse,
 } from "@interfaces/rule.interface";
-
-interface MaxArrayLengthRuleOptions {
-  limit: number;
-}
 
 export class TSMaxArrayLengthRule implements LabInsightRule {
   private limit: number;
 
-  constructor(options: MaxArrayLengthRuleOptions) {
-    this.limit = options.limit;
+  constructor(options: LabInsightRuleOptions) {
+    this.limit = options.options?.limit;
   }
 
   /**

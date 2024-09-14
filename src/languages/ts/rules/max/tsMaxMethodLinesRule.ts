@@ -1,15 +1,14 @@
-import ts from "typescript";
 import {
   LabInsightRule,
   LabInsightRuleResponse,
 } from "@interfaces/rule.interface";
-import chalk from "chalk";
+import ts from "typescript";
 
 export class TSMaxMethodLinesRule implements LabInsightRule {
-  private maxLines: number;
+  private limit: number;
 
   constructor(options: any) {
-    this.maxLines = options.limit;
+    this.limit = options.options?.limit;
   }
 
   public async apply(
@@ -23,45 +22,46 @@ export class TSMaxMethodLinesRule implements LabInsightRule {
       true
     );
 
-    const result = this.analyzeMethods(sourceFile, filePath);
+    const result = this.analyzeMethodLines(sourceFile, filePath);
 
     return result;
   }
 
-  private analyzeMethods(
+  private analyzeMethodLines(
     sourceFile: ts.SourceFile,
     filePath: string
   ): LabInsightRuleResponse | null {
-    let ruleViolated = false;
     let response: LabInsightRuleResponse | null = null;
 
-    const visitNode = (node: ts.Node): void => {
-      if (ts.isMethodDeclaration(node) || ts.isFunctionDeclaration(node)) {
-        const startLine =
-          sourceFile.getLineAndCharacterOfPosition(node.getStart()).line + 1;
-        const endLine =
-          sourceFile.getLineAndCharacterOfPosition(node.getEnd()).line + 1;
-        const lines = endLine - startLine;
+    const visit = (node: ts.Node) => {
+      // Vérifier si le nœud est une méthode de classe
+      if (ts.isMethodDeclaration(node) && node.name) {
+        const { line: startLine } = sourceFile.getLineAndCharacterOfPosition(
+          node.getStart()
+        );
+        const { line: endLine } = sourceFile.getLineAndCharacterOfPosition(
+          node.getEnd()
+        );
 
-        if (lines > this.maxLines) {
-          // Change the max lines here
-          ruleViolated = true;
+        const methodLines = endLine - startLine + 1;
+
+        if (methodLines > this.limit) {
+          const methodName = (node.name as ts.Identifier).text;
+
           response = {
-            severity: "error",
-            message: `Method exceeds the maximum allowed lines of ${chalk.bold(
-              this.maxLines
-            )}. Total lines: ${lines}`,
             path: filePath,
-            line: startLine,
-            column: 0,
+            message: `The method '${methodName}' has ${methodLines} lines, which exceeds the limit of ${this.limit} lines.`,
+            severity: "error",
           };
         }
       }
 
-      ts.forEachChild(node, visitNode);
+      // Parcourir les enfants du nœud
+      ts.forEachChild(node, visit);
     };
 
-    visitNode(sourceFile);
+    // Parcourir tout le fichier source
+    ts.forEachChild(sourceFile, visit);
 
     return response;
   }

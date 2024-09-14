@@ -1,5 +1,24 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.0.9 - 2024-09-15
+
+### New Features
+
+- **Python Support**: Added basic Python support, allowing analysis of Python files with new rules for casing, maximum lines, and docstring requirements.
+- **Expanded Rules for Python**: Introduced key rules for Python, including casing conventions (`PascalCase` for classes, `snake_case` for functions, methods, and parameters), maximum lines per file, function, and method, as well as requirements for function and class descriptions.
+- **Casing Rules for JavaScript & TypeScript**: Added casing rules to enforce consistent naming conventions across all JavaScript, TypeScript, and Python projects.
+- **Rule Customization**: Support for custom rule configuration in `.labinsight` files, allowing projects to define and adjust rules based on team standards.
+
+### Improvements
+
+- **Rule Validation**: Improved validation for existing JavaScript, TypeScript, and Python rules, ensuring more accurate detection of code quality issues.
+- **Configuration Schema Update**: The configuration schema now supports a broader range of rule definitions and project-specific options, making customization easier.
+
+### Bug Fixes
+
+- **Try-Catch Rule**: Fixed an issue with `JSRequireTryCatchRule` where some asynchronous code blocks were not properly detected for missing `try-catch` statements.
+- **Casing Rules**: Fixed casing rule issues to ensure correct enforcement for methods, parameters, and properties across languages.
+
 ## Version 0.0.8 - 2024-09-13
 
 ### New Features

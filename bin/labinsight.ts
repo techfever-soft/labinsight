@@ -4,7 +4,7 @@ import { program } from "commander";
 import { InitCommand } from "../src/cli/initCommand";
 import { AnalyzeCommand } from "../src/cli/analyzeCommand";
 
-program.version("0.0.7");
+program.version("0.0.9");
 
 /**
  * Initialize a new .labinsight file
@@ -28,6 +28,7 @@ program
   .option("-t, --type <type>", "Type of analysis to perform")
   .option("-k, --keep", "Keep the generated reports")
   .option("-v, --verbose", "Run in verbose mode")
+  .option("-o --only <language>", "Only analyze files of a specific language")
   .action((options): void => {
     new AnalyzeCommand().execute(options);
   });

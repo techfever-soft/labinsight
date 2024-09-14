@@ -10,36 +10,61 @@ A static code analysis tool designed to provide insights and improve the quality
 
 ## Features
 
-- [x] Project structure exploration
-- [x] Terminal-based reports
-- [x] Automatic project detection
-- [x] Custom configuration file '.labinsight' (v2)
-- [x] Basic code analysis for common errors
-  - [x] Options
-  - [ ] Decorators
-  - [x] Casing
+Labinsight offers a comprehensive set of features to help you analyze and improve your codebase, whether you're working with JavaScript, TypeScript, or other languages. Here's what Labinsight can do:
+
+### Project Analysis
+
+- [x] **Project structure exploration**: Automatically detects and explores the structure of your project.
+- [x] **Automatic project detection**: No need to configure paths manually; Labinsight intelligently detects your project setup.
+
+### Reporting
+
+- [x] **Terminal-based reports**: Real-time feedback and insights directly in the terminal.
+- [x] **Command-line arguments**: Flexible CLI options for customized analysis (`--only <lang>`, `--silent`, etc.).
+- [x] **JSON reports generation**: Detailed reports in JSON format for further processing.
+- [ ] **Enhanced reporting formats**: Future support for HTML, XML, and online reports.
+
+### Code Analysis
+
+- [x] **Basic code analysis**: Identifies common errors and enforces best practices.
+
+  - [x] **Casing rules**: Ensures consistent naming conventions.
     - [x] camelCase
     - [x] PascalCase
     - [x] snake_case
-- [x] Deep code analysis
-  - [x] Code complexity analysis
-  - [ ] Code performance analysis
-- [x] Dependency checking
-- [x] Custom rule creation
-- [x] Command line arguments
-- [x] JSON reports generation
+  - [x] **Options and configuration**: Customizable rules via the `.labinsight` configuration file.
+  - [ ] **Decorators support**: Planned support for analyzing decorators.
 
-Upcoming features and improvements include:
+- [x] **Deep code analysis**: Advanced analysis to identify complex code patterns.
 
-- [ ] Support for Python and other languages
-- [ ] Enhanced reporting formats (Online, JSON, HTML, XML)
-- [ ] Integration with CI/CD pipelines
+  - [x] **Code complexity analysis**: Detects high complexity functions or classes that may need refactoring.
+  - [ ] **Code performance analysis**: (Upcoming) Analyze performance bottlenecks in your code.
+
+- [x] **Dependency checking**: Analyze dependencies to detect potential vulnerabilities or unused packages.
+
+### Customization
+
+- [x] **Custom rule creation**: Create your own rules to match your specific coding standards and needs.
+
+### Multilanguage Support
+
+- [x] **JavaScript and TypeScript**: Full support for JS/TS analysis.
+- [x] **Python support**: New in v0.0.9, analyze Python code alongside JavaScript and TypeScript.
+
+### CI/CD Integration
+
+- [ ] **CI/CD pipelines**: Planned integration for automated code analysis in your CI/CD workflow.
+
+### Upcoming Features
+
+- [ ] **Support for additional languages**: Expand Labinsight to work with more programming languages.
+- [ ] **Performance insights**: Advanced metrics and recommendations to optimize your codebase's performance.
 
 [See the roadmap for more features](https://github.com/techfever-soft/labinsight/blob/main/ROADMAP.md)
 
 ## Supported Languages
 
-![TypeScript](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/typescript-original%201.png?alt=media&token=037a43bd-ab27-42e3-b7cb-23ef2be578a4) ![JavaScript](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/javascript-original%201.png?alt=media&token=7ffecaaa-0b32-4f7a-92f8-413cdc674552)
+![TypeScript](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/typescript-original%201.png?alt=media&token=037a43bd-ab27-42e3-b7cb-23ef2be578a4) ![JavaScript](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/javascript-original%201.png?alt=media&token=7ffecaaa-0b32-4f7a-92f8-413cdc674552) ![Python](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/python-original%201.png?alt=media&token=ce924af3-03b5-4b78-aa3b-ef9064e5f36c)
 
 **More language support is planned in future releases.**
 
@@ -86,13 +111,7 @@ labinsight analyze
 To analyze your codebase in a single command.
 You will be prompted for which type of analysis you want to perform.
 
-Available arguments are `--keep`, `--type`, `--silent`. [(See docs)](https://github.com/techfever-soft/labinsight/blob/main/docs/analyze.md)
-
-```bash
-labinsight generate-rule
-```
-
-To generate a new rule file. [(See docs)](https://github.com/techfever-soft/labinsight/blob/main/docs/customRules.md)
+Available arguments are `--keep`, `--type`, `--silent`, `--verbose`, `--only`. [(See docs)](https://github.com/techfever-soft/labinsight/blob/main/docs/analyze.md)
 
 ## Contributing
 

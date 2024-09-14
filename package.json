@@ -1,7 +1,7 @@
 {
   "name": "@techfever/labinsight",
   "description": "A smart code analysis tool for all your project needs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "dist/bin/labinsight.js",
   "private": false,
   "bin": {
@@ -9,7 +9,8 @@
   },
   "types": "dist/types/src/index.d.ts",
   "scripts": {
-    "build": "tsc && tsc-alias && node dist/bin/labinsight.js",
+    "build": "tsc && tsc-alias && npm run copy-python && node dist/bin/labinsight.js",
+    "copy-python": "gulp copy-python",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "_moduleAliases": {
@@ -46,12 +47,14 @@
     "chalk": "^4.1.2",
     "module-alias": "^2.2.3",
     "npm-registry-fetch": "^17.1.0",
-    "ora": "^5.4.1",
-    "typescript": "^5.5.4"
+    "ora": "^5.4.1"
   },
   "devDependencies": {
     "@types/module-alias": "^2.0.4",
     "@types/npm-registry-fetch": "^8.0.7",
-    "tsc-alias": "^1.8.10"
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.6.2"
   }
 }

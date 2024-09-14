@@ -7,9 +7,7 @@ export interface LabInsightRule {
   apply: (
     fileContent: string,
     filePath: string
-  ) =>
-    | Promise<LabInsightRuleResponse | null>
-    | Promise<LabInsightRuleResponse[]>;
+  ) => Promise<LabInsightRuleResponse[] | LabInsightRuleResponse | null>;
 }
 
 /**
