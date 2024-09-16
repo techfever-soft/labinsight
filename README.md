@@ -6,6 +6,8 @@ A static code analysis tool designed to provide insights and improve the quality
 
 ### [See the documentation](https://github.com/techfever-soft/labinsight/blob/main/docs)
 
+### [Review the tool](https://forms.gle/xLBZHFiqwAQUStiz9)
+
 ### [See the changelog](https://github.com/techfever-soft/labinsight/blob/main/CHANGELOG.md)
 
 ## Features
@@ -22,7 +24,8 @@ Labinsight offers a comprehensive set of features to help you analyze and improv
 - [x] **Terminal-based reports**: Real-time feedback and insights directly in the terminal.
 - [x] **Command-line arguments**: Flexible CLI options for customized analysis (`--only <lang>`, `--silent`, etc.).
 - [x] **JSON reports generation**: Detailed reports in JSON format for further processing.
-- [ ] **Enhanced reporting formats**: Future support for HTML, XML, and online reports.
+- [x] **HTML reports generation**: Detailed reports in HTML format.
+- [ ] **Enhanced reporting formats**: Future support for XML, and online reports.
 
 ### Code Analysis
 

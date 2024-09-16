@@ -80,10 +80,25 @@ labinsight analyze --only js
 
 This command will restrict the analysis to JavaScript files only.
 
+### Output format
+
+`html` for HTML file
+`json` for JSON file
+
+Example:
+
+```bash
+labinsight analyze -f html
+```
+
+This command will generate a report giving the format.
+
 ### Example: Combining Options
 
 You can combine different options to tailor the analysis to your needs. For example, to perform a deep analysis on Python files while keeping previous reports, you can run:
 
 ```bash
-labinsight analyze --type deep --only py --keep
+labinsight analyze --type deep --only py --format html --keep
 ```
+
+This will scan your directory deeply searching for Python files, generating a HTML report and keeping reports history.

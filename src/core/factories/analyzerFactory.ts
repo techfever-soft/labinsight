@@ -1,5 +1,6 @@
 import { IAnalyzer } from "@interfaces/analyzer.interface";
 import { JSDeepAnalyzer } from "@languages/js/analyzers/jsDeepAnalyzer";
+import { PyDeepAnalyzer } from "@languages/python/analyzers/pyDeepAnalyzer";
 import { TSDeepAnalyzer } from "@languages/ts/analyzers/tsDeepAnalyzer";
 import chalk from "chalk";
 

@@ -28,7 +28,11 @@ program
   .option("-t, --type <type>", "Type of analysis to perform")
   .option("-k, --keep", "Keep the generated reports")
   .option("-v, --verbose", "Run in verbose mode")
-  .option("-o --only <language>", "Only analyze files of a specific language")
+  .option("-o, --only <language>", "Only analyze files of a specific language")
+  .option(
+    "-f, --format <format>",
+    "Analysis output format (json, csv, html or xml)"
+  )
   .action((options): void => {
     new AnalyzeCommand().execute(options);
   });

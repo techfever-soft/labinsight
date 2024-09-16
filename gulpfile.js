@@ -7,3 +7,9 @@ gulp.task("copy-python", async function () {
     gulp.src('src/**/*.py', { base: 'src/languages/python/scripts' })
         .pipe(gulp.dest(scriptsPath));
 });
+
+gulp.task("copy-templates", async function () {
+    var templatesPath = path.join("dist", "src", "templates");
+    gulp.src('src/**/*.hbs', { base: 'src/templates' })
+        .pipe(gulp.dest(templatesPath));
+});

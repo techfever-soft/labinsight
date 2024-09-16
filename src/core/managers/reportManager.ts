@@ -9,6 +9,10 @@ import {
   DependencyReport,
 } from "@interfaces/report.interface";
 import chalk from "chalk";
+import { ReportFormat } from "@lab-types/report.type";
+import Handlebars, { log } from "handlebars";
+import { v4 as uuid } from "uuid";
+import { exec } from "child_process";
 
 export class ReportManager {
   private dependencyReportPath!: string;
@@ -24,13 +28,79 @@ export class ReportManager {
    */
   public async generateReport(
     type: LabInsightArgType,
-    format: "json",
+    format: ReportFormat,
     report: DeepReport | BasicReport | DependencyReport
   ) {
     switch (format) {
       case "json":
         this.generateJsonReport(type, report);
         break;
+      case "html":
+        this.generateHtmlReport(type, report);
+        break;
+      default:
+        throw new Error("Invalid report format");
+    }
+  }
+
+  private async generateHtmlReport(
+    type: LabInsightArgType,
+    report: DeepReport | BasicReport | DependencyReport
+  ) {
+    const now = new Date();
+    const id = uuid();
+    const reportName = `${id}.html`;
+    const reportsPath = path.join(process.cwd(), "reports", type, "html");
+
+    const templatePath = path.join(
+      __dirname,
+      "..",
+      "..",
+      "templates",
+      "report.hbs"
+    );
+    const template = fs.readFileSync(templatePath, "utf8");
+
+    Handlebars.registerHelper("eq", function (a, b) {
+      return a === b;
+    });
+
+    const compiledTemplate = Handlebars.compile(template);
+
+    const typeFormatted = type.charAt(0).toUpperCase() + type.slice(1);
+
+    const finalReport = {
+      ...report,
+      reportId: id,
+      reportType: typeFormatted,
+      reportDate: now.toLocaleString(),
+    };
+
+    const htmlOutput = compiledTemplate(finalReport);
+
+    if (!fs.existsSync(reportsPath)) {
+      fs.mkdirSync(reportsPath, { recursive: true });
+    }
+
+    const reportFilePath = path.join(reportsPath, reportName);
+    fs.writeFileSync(reportFilePath, htmlOutput);
+
+    const logger = new LoggerUtil();
+
+    logger.spacing();
+
+    console.log(
+      `${
+        type.charAt(0).toUpperCase() + type.slice(1)
+      } report generated at ${chalk.italic(reportFilePath)}`
+    );
+
+    // Try to open the report in the browser
+    try {
+      const startCommand = process.platform === "win32" ? "start" : "open";
+      exec(`${startCommand} ${reportFilePath}`);
+    } catch (e) {
+      console.log("Failed to open the report in the browser");
     }
   }
 
@@ -43,10 +113,10 @@ export class ReportManager {
     type: LabInsightArgType,
     report: DeepReport | BasicReport | DependencyReport
   ) {
+    const id = uuid();
     const now = new Date();
     const formattedDate = now.toISOString().replace(/:/g, "-");
-    const reportName = `${formattedDate}.json`;
-
+    const reportName = `${id}.json`;
     const reportsPath = path.join(process.cwd(), "reports");
 
     const configManager = new ArgManager();

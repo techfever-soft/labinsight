@@ -1,0 +1,52 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LabInsight - Generated Report at {{reportDate}}</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+    </style>
+  </head>
+  <body>
+    <h1>Generated Report</h1>
+
+    <fieldset>
+      <legend>Report Details</legend>
+      <p><strong>Report type:</strong> {{reportType}}</p>
+      <p><strong>Report UID:</strong> {{reportId}}</p>
+      <p><strong>Report Date:</strong> {{reportDate}}</p>
+
+      <hr />
+
+      <h2>Files</h2>
+
+      {{#if (eq reportType "Deep")}}
+        {{#each files}}
+          <p><strong>File path:</strong> {{path}}</p>
+          <ul>
+            <li><strong>Line count:</strong> {{loc}}</li>
+            <li><strong>Complexity:</strong> {{complexity}}</li>
+            <li><strong>Cognitive complexity:</strong>
+              {{cognitiveComplexity}}</li>
+          </ul>
+        {{/each}}
+      {{else if (eq reportType "Basic")}}
+        <h3>Errors & Warnings</h3>
+        <ul>
+          {{#each files}}
+            <li>
+              <strong>File path:</strong>
+              {{path}}
+              <ul>
+                <li><strong>{{severity}}:</strong> {{message}}</li>
+                <li><strong>Line:</strong> {{line}}</li>
+                <li><strong>Column:</strong> {{column}}</li>
+              </ul>
+            </li>
+          {{/each}}
+        </ul>
+      {{/if}}
+
+    </fieldset>
+  </body>
+</html>

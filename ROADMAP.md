@@ -21,10 +21,9 @@ Labinsight is continuously evolving to provide developers with deeper insights i
 - [x] Report generation for results 
     - [x] JSON
     - [ ] Online
-    - [ ] HTML
-    - [ ] XML
+    - [x] HTML
+    - [x] XML
 - [x] Basic support for TypeScript and JavaScript analysis / optionally Python
-- [ ] Documentation generation for better integration with development processes
 
 ## Version 1.1.0 (Stability and Performance Enhancements)
 

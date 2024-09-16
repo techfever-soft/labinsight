@@ -1,5 +1,12 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.0 - 2024-09-16
+
+## New Features
+
+- **New command**: Added a new command to define which type of report you want to generate.
+- **HTML Reports**: Added support for generating HTML reports from analysis, making it easier to visualize results.
+
 ## Version 0.0.9 - 2024-09-15
 
 ### New Features
