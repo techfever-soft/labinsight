@@ -25,4 +25,10 @@ export const pyRules: { [ruleName: string]: any } = {
   "py.casing-method": PyCasingMethodRule,
   "py.casing-parameter": PyCasingParameterRule,
   "py.casing-property": PyCasingPropertyRule,
+
+  // Limit rules
+  // TODO: Implement limit rules
+
+  // No rules
+  // TODO: Implement no rules
 };

@@ -117,7 +117,7 @@ export class ReportManager {
     const now = new Date();
     const formattedDate = now.toISOString().replace(/:/g, "-");
     const reportName = `${id}.json`;
-    const reportsPath = path.join(process.cwd(), "reports");
+    const reportsPath = path.join(process.cwd(), "reports", type, "json");
 
     const configManager = new ArgManager();
     const args = configManager.getArgs();
@@ -156,7 +156,16 @@ export class ReportManager {
     if (!args.keep) {
       const files = fs.readdirSync(reportFolderPath);
       for (const file of files) {
-        fs.unlinkSync(path.join(reportFolderPath, file));
+        const filePath = path.join(reportFolderPath, file);
+        const fileStat = fs.lstatSync(filePath);
+
+        // Only unlink files, not directories
+        if (fileStat.isFile()) {
+          fs.unlinkSync(filePath);
+        } else if (fileStat.isDirectory()) {
+          // If it's a directory, you can remove it recursively if needed
+          fs.rmdirSync(filePath, { recursive: true });
+        }
       }
     }
 

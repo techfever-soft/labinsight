@@ -1,5 +1,16 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.1 - 2024-09-17
+
+## New Features
+
+- **Python Deep Analyzer**: Implemented the Python deep analyzer.
+- **Jest**: Added Jest for future testings
+
+### Improvements
+
+- **Reports**: Patched the unlink error when the "reports" folder is not empty.
+
 ## Version 0.1.0 - 2024-09-16
 
 ## New Features
