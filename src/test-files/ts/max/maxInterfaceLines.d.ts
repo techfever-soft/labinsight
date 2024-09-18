@@ -1,0 +1,5 @@
+/**
+ * TestTSMaxInterface
+ */
+export interface TestTSMaxInterface {
+}

@@ -1,5 +1,12 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.2 - 2024-09-18
+
+### Improvements
+
+- **Directory Structure**: Changed the `srcDir` in `tsconfig.json` to `./src`, setting `index.ts` as the new entry point. This update standardizes the project layout, making it easier to manage and scale.
+- **Module Resolution**: Ensured that all source files are correctly referenced, reducing build errors and improving the reliability of the compilation process.
+
 ## Version 0.1.1 - 2024-09-17
 
 ## New Features

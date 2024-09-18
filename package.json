@@ -11,7 +11,7 @@
   "bin": {
     "labinsight": "dist/bin/labinsight.js"
   },
-  "types": "dist/types/src/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && tsc-alias && npm run copy-python && npm run copy-templates && node dist/bin/labinsight.js",
     "copy-python": "gulp copy-python",

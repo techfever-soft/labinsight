@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+import { AnalyzeCommand } from "@cli/analyzeCommand";
+import { InitCommand } from "@cli/initCommand";
 import { program } from "commander";
-import { InitCommand } from "../src/cli/initCommand";
-import { AnalyzeCommand } from "../src/cli/analyzeCommand";
 
 program.version("0.0.9");
 
