@@ -1,5 +1,15 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.3 - 2024-09-18
+
+### Changed
+
+- **Dependencies**: Moved all `devDependencies` to `dependencies` to ensure that necessary packages, such as `@techfever/labinsight` and `@inquirer/prompts`, are included in the final bundle of the VSCode extension. This modification prevents errors related to missing modules during the execution of the extension.
+
+### Fixed
+
+- **Bundling Issue**: Resolved the problem where the `node_modules` folder was not included in the extension package, preventing the correct execution of CLI scripts.
+
 ## Version 0.1.2 - 2024-09-18
 
 ### Improvements
