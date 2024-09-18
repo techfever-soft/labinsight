@@ -1,11 +1,9 @@
-import { FileManager } from "@core/managers/fileManager";
-import {
-  AnalysisResult,
-  CodeComplexityResult,
-} from "@interfaces/analyzer.interface";
-import { AnalyzerFactory } from "@core/factories/analyzerFactory";
-import { ComplexityLogger } from "@core/loggers/complexityLogger";
-import { ArgManager } from "@core/managers/argManager";
+import { CodeComplexityResult, AnalysisResult } from "../../interfaces/analyzer.interface";
+import { AnalyzerFactory } from "../factories/analyzerFactory";
+import { ComplexityLogger } from "../loggers/complexityLogger";
+import { ArgManager } from "../managers/argManager";
+import { FileManager } from "../managers/fileManager";
+
 
 export class DeepAnalyzer {
   private fileManager = new FileManager();

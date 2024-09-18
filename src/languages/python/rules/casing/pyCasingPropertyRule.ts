@@ -2,8 +2,8 @@ import {
     LabInsightRule,
     LabInsightRuleOptions,
     LabInsightRuleResponse,
-  } from "@interfaces/rule.interface";
-  import { PyDirectoryAnalyzer } from "@languages/python/analyzers/pyDirectoryAnalyzer";
+  } from "../../../../interfaces/rule.interface";
+  import { PyDirectoryAnalyzer } from "../../../../languages/python/analyzers/pyDirectoryAnalyzer";
   
   export class PyCasingPropertyRule implements LabInsightRule {
     private options: LabInsightRuleOptions;

@@ -1,12 +1,12 @@
-import { ConfigManager } from "@config/configManager";
-import { ReportFactory } from "@core/factories/reportFactory";
-import { ComplexityLogger } from "@core/loggers/complexityLogger";
-import { ArgManager } from "@core/managers/argManager";
-import { ReportManager } from "@core/managers/reportManager";
+import { ConfigManager } from "../config/configManager";
+import { ReportFactory } from "../core/factories/reportFactory";
+import { ComplexityLogger } from "../core/loggers/complexityLogger";
+import { ArgManager } from "../core/managers/argManager";
+import { ReportManager } from "../core/managers/reportManager";
 import { select } from "@inquirer/prompts";
-import { LabInsightArgType } from "@lab-types/arg.type";
-import { ReportFormat } from "@lab-types/report.type";
-import { LoggerUtil } from "@utils/loggerUtil";
+import { LabInsightArgType } from "../types/arg.type";
+import { ReportFormat } from "../types/report.type";
+import { LoggerUtil } from "../utils/loggerUtil";
 import chalk from "chalk";
 import path from "path";
 

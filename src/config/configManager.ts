@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { confirm } from "@inquirer/prompts";
-import { LabInsightConfig } from "@interfaces/config.interface";
+import { LabInsightConfig } from "../interfaces/config.interface";
 import { AutoDetectManager } from "./autoDetectManager";
 
 export class ConfigManager {

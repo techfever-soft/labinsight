@@ -1,4 +1,4 @@
-import { AnalyzeCommand } from "@cli/analyzeCommand";
+import { AnalyzeCommand } from "../cli/analyzeCommand";
 
 jest.mock("@config/configManager");
 jest.mock("@core/managers/argManager");

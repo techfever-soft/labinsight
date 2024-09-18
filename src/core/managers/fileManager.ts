@@ -1,4 +1,4 @@
-import { ConfigManager } from "@config/configManager";
+import { ConfigManager } from "../../config/configManager";
 import fs from "fs";
 import path from "path";
 

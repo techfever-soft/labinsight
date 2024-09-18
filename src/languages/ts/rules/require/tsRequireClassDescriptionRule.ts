@@ -2,7 +2,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 import ts from "typescript";
 
 export class TSRequireClassDescriptionRule implements LabInsightRule {

@@ -1,9 +1,9 @@
 import chalk from "chalk";
-import { LoggerUtil } from "@utils/loggerUtil";
 import {
   CodeComplexityResult,
   AnalysisResult,
-} from "@interfaces/analyzer.interface";
+} from "../../interfaces/analyzer.interface";
+import { LoggerUtil } from "../../utils/loggerUtil";
 
 export class ComplexityLogger {
   private logger = new LoggerUtil();

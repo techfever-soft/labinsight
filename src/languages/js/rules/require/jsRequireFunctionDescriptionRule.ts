@@ -1,6 +1,5 @@
-import { LabInsightRule, LabInsightRuleResponse } from "@interfaces/rule.interface";
+import { LabInsightRule, LabInsightRuleResponse } from "../../../../interfaces/rule.interface";
 import * as acorn from "acorn";
-import * as walk from "acorn-walk";
 
 /**
  * Rule that checks if every function has a JSDoc description.

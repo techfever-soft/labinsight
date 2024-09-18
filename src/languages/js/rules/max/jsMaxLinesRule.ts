@@ -2,7 +2,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 
 /**
  * Rule to enforce the maximum number of lines in a file or function for JavaScript files

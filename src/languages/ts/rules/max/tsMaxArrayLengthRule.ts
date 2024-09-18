@@ -3,7 +3,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 
 export class TSMaxArrayLengthRule implements LabInsightRule {
   private limit: number;

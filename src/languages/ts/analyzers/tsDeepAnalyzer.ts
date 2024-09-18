@@ -1,6 +1,6 @@
 import ts from "typescript";
 import * as fs from "fs";
-import { IAnalyzer } from "@interfaces/analyzer.interface";
+import { IAnalyzer } from "../../../interfaces/analyzer.interface";
 
 export class TSDeepAnalyzer implements IAnalyzer {
   public async analyze(fileContent: string, filePath: string): Promise<any> {

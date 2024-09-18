@@ -1,5 +1,6 @@
-import { LabInsightRuleResponse } from "@interfaces/rule.interface";
-import { LoggerUtil } from "@utils/loggerUtil";
+import { LabInsightRuleResponse } from "../../interfaces/rule.interface";
+import { LoggerUtil } from "../../utils/loggerUtil";
+
 
 export class BasicLogger {
   /**

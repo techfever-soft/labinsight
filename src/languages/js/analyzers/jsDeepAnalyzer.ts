@@ -1,4 +1,4 @@
-import { IAnalyzer } from "@interfaces/analyzer.interface";
+import { IAnalyzer } from "../../../interfaces/analyzer.interface";
 import * as acorn from "acorn";
 import * as fs from "fs";
 

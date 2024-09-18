@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
-import { LabInsightConfig } from "@interfaces/config.interface";
-import { LabInsightRuleConfig } from "@interfaces/rule.interface";
+import { LabInsightConfig } from "../interfaces/config.interface";
+import { LabInsightRuleConfig } from "../interfaces/rule.interface";
 
 export class AutoDetectManager {
   private dependencies: { [key: string]: string };

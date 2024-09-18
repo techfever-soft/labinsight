@@ -1,9 +1,8 @@
-import { ConfigManager } from "@config/configManager";
-import * as fs from "fs";
-import * as path from "path";
-import { LoggerUtil } from "@utils/loggerUtil";
-import { LabInsightRule } from "@interfaces/rule.interface";
-import chalk from "chalk";
+import path from "path";
+import { ConfigManager } from "../../config/configManager";
+import { LabInsightRule } from "../../interfaces/rule.interface";
+import { LoggerUtil } from "../../utils/loggerUtil";
+import fs from "fs";
 
 export class CustomRuleLoader {
   /**

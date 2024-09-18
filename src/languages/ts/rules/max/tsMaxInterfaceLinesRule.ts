@@ -1,7 +1,7 @@
 import {
   LabInsightRule,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 import ts from "typescript";
 
 export class TSMaxInterfaceLinesRule implements LabInsightRule {

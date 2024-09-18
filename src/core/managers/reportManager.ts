@@ -1,15 +1,15 @@
 import path from "path";
 import fs from "fs";
-import { LabInsightArgType } from "@lab-types/arg.type";
+import { LabInsightArgType } from "../../types/arg.type";
 import { ArgManager } from "./argManager";
-import { LoggerUtil } from "@utils/loggerUtil";
+import { LoggerUtil } from "../../utils/loggerUtil";
 import {
   BasicReport,
   DeepReport,
   DependencyReport,
-} from "@interfaces/report.interface";
+} from "../../interfaces/report.interface";
 import chalk from "chalk";
-import { ReportFormat } from "@lab-types/report.type";
+import { ReportFormat } from "../../types/report.type";
 import Handlebars, { log } from "handlebars";
 import { v4 as uuid } from "uuid";
 import { exec } from "child_process";

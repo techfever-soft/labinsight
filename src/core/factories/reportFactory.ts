@@ -1,14 +1,14 @@
-import { BasicAnalyzer } from "@core/analyzers/basicAnalyzer";
-import { DeepAnalyzer } from "@core/analyzers/deepAnalyzer";
-import { DependencyAnalyzer } from "@core/analyzers/dependencyAnalyzer";
-import { AnalysisResult } from "@interfaces/analyzer.interface";
+import { AnalysisResult } from "../../interfaces/analyzer.interface";
 import {
-  BasicReport,
   DeepReport,
+  BasicReport,
   DependencyReport,
-} from "@interfaces/report.interface";
-import { LabInsightRuleResponse } from "@interfaces/rule.interface";
-import { LabInsightArgType } from "@lab-types/arg.type";
+} from "../../interfaces/report.interface";
+import { LabInsightRuleResponse } from "../../interfaces/rule.interface";
+import { LabInsightArgType } from "../../types/arg.type";
+import { BasicAnalyzer } from "../analyzers/basicAnalyzer";
+import { DeepAnalyzer } from "../analyzers/deepAnalyzer";
+import { DependencyAnalyzer } from "../analyzers/dependencyAnalyzer";
 
 export class ReportFactory {
   private deepReport!: DeepReport;

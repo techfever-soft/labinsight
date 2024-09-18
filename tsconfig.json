@@ -4,16 +4,16 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "baseUrl": ".",
-    "paths": {
-      "@cli/*": ["src/cli/*"],
-      "@core/*": ["src/core/*"],
-      "@interfaces/*": ["src/interfaces/*"],
-      "@utils/*": ["src/utils/*"],
-      "@config/*": ["src/config/*"],
-      "@languages/*": ["src/languages/*"],
-      "@lab-types/*": ["src/types/*"],
-      "@loaders/*": ["src/loaders/*"]
-    },
+    // "paths": {
+    //   "@cli/*": ["src/cli/*"],
+    //   "@core/*": ["src/core/*"],
+    //   "@interfaces/*": ["src/interfaces/*"],
+    //   "@utils/*": ["src/utils/*"],
+    //   "@config/*": ["src/config/*"],
+    //   "@languages/*": ["src/languages/*"],
+    //   "@lab-types/*": ["src/types/*"],
+    //   "@loaders/*": ["src/loaders/*"]
+    // },
     "outDir": "./dist",
     "rootDir": "./src",
     "declaration": true,
@@ -23,5 +23,5 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true
-  },
+  }
 }

@@ -3,7 +3,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 
 /**
  * Rule to prevent the use of global state in TypeScript files, except when exported

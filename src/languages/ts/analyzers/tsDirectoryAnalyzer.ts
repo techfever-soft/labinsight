@@ -1,9 +1,9 @@
-import { FileManager } from "@core/managers/fileManager";
+import { FileManager } from "../../../core/managers/fileManager";
 import {
   IDirectoryAnalyzer,
   IAnalyzer,
   CodeComplexityResult,
-} from "@interfaces/analyzer.interface";
+} from "../../../interfaces/analyzer.interface";
 
 export class TSDirectoryAnalyzer implements IDirectoryAnalyzer {
   private fileAnalyzer: IAnalyzer;

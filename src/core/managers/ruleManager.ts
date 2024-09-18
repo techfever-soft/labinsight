@@ -1,9 +1,10 @@
 import * as path from "path";
-import { ConfigManager } from "@config/configManager";
-import { LabInsightRule } from "@interfaces/rule.interface";
-import { jsRules } from "@languages/js/jsRules";
-import { tsRules } from "@languages/ts/tsRules";
-import { pyRules } from "@languages/python/pyRules";
+import { ConfigManager } from "../../config/configManager";
+import { LabInsightRule } from "../../interfaces/rule.interface";
+import { jsRules } from "../../languages/js/jsRules";
+import { pyRules } from "../../languages/python/pyRules";
+import { tsRules } from "../../languages/ts/tsRules";
+
 
 export class RuleManager {
   private configManager: ConfigManager;

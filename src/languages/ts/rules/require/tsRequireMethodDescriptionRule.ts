@@ -3,7 +3,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 
 export class TSRequireMethodDescriptionRule implements LabInsightRule {
   private options: LabInsightRuleOptions;

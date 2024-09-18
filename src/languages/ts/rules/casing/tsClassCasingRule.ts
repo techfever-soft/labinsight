@@ -3,7 +3,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 
 /**
  * Rule to enforce the casing convention for classes in TypeScript

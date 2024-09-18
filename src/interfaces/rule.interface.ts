@@ -1,4 +1,4 @@
-import { LabInsightSeverity } from "@lab-types/convention.type";
+import { LabInsightSeverity } from "../types/convention.type";
 
 /**
  * Interface for the rule

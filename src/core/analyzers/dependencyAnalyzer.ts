@@ -1,10 +1,11 @@
-import { ArgManager } from "@core/managers/argManager";
-import { DependencyReport } from "@interfaces/report.interface";
-import { LoggerUtil } from "@utils/loggerUtil";
+
 import chalk from "chalk";
 import * as fs from "fs";
 import fetch from "npm-registry-fetch";
 import * as path from "path";
+import { DependencyReport } from "../../interfaces/report.interface";
+import { LoggerUtil } from "../../utils/loggerUtil";
+import { ArgManager } from "../managers/argManager";
 
 export class DependencyAnalyzer {
   private dependencyResults: DependencyReport = {

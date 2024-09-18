@@ -1,5 +1,11 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.5 - 2024-09-19
+
+### Refactoring
+
+- **Code Structure**: Cleaned up and refactored the codebase, replacing alias imports with relative paths and improving the overall structure.
+
 ## Version 0.1.4 - 2024-09-18
 
 ### Changed

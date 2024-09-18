@@ -1,4 +1,4 @@
-import { ConfigManager } from "@config/configManager";
+import { ConfigManager } from "../config/configManager";
 
 export class InitCommand {
   /**

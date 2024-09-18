@@ -3,7 +3,7 @@ import {
   LabInsightProjectEngine,
   LabInsightProjectEnvironment,
   LabInsightProjectLinting,
-} from "@lab-types/config.type";
+} from "../types/config.type";
 import { LabInsightCustomRule, LabInsightRuleConfig } from "./rule.interface";
 
 /**

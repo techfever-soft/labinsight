@@ -3,7 +3,7 @@ import {
   LabInsightRule,
   LabInsightRuleOptions,
   LabInsightRuleResponse,
-} from "@interfaces/rule.interface";
+} from "../../../../interfaces/rule.interface";
 import chalk from "chalk";
 
 export class TSMaxFileLinesRule implements LabInsightRule {

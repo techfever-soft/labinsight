@@ -1,10 +1,10 @@
-import { ConfigManager } from "@config/configManager";
-import { FileManager } from "@core/managers/fileManager";
+import { ConfigManager } from "../../../config/configManager";
+import { FileManager } from "../../../core/managers/fileManager";
 import {
   IDirectoryAnalyzer,
   IAnalyzer,
   CodeComplexityResult,
-} from "@interfaces/analyzer.interface";
+} from "../../../interfaces/analyzer.interface";
 
 export class JSDirectoryAnalyzer implements IDirectoryAnalyzer {
   private fileAnalyzer: IAnalyzer;

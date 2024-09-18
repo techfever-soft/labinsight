@@ -2,7 +2,7 @@ import {
     LabInsightRule,
     LabInsightRuleOptions,
     LabInsightRuleResponse,
-  } from "@interfaces/rule.interface";
+  } from "../../../../interfaces/rule.interface";
   import * as acorn from "acorn";
   import * as walk from "acorn-walk";
   

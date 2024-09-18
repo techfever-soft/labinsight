@@ -1,4 +1,4 @@
-import { AstManager } from "@core/managers/astManager";
+import { AstManager } from "../../../core/managers/astManager";
 import { execFile } from "child_process";
 import fs from "fs";
 import path from "path";

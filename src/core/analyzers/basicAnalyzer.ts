@@ -1,12 +1,11 @@
-import { RuleManager } from "@core/managers/ruleManager";
-import { CustomRuleLoader } from "@core/loaders/customRuleLoader";
-import { FileManager } from "@core/managers/fileManager";
-import { LoggerUtil } from "@utils/loggerUtil";
 import chalk from "chalk";
-import { LabInsightRuleResponse } from "@interfaces/rule.interface";
 import { BasicLogger } from "../loggers/basicLogger";
 import { exec } from "child_process";
-import { ArgManager } from "@core/managers/argManager";
+import { LabInsightRuleResponse } from "../../interfaces/rule.interface";
+import { CustomRuleLoader } from "../loaders/customRuleLoader";
+import { ArgManager } from "../managers/argManager";
+import { FileManager } from "../managers/fileManager";
+import { RuleManager } from "../managers/ruleManager";
 
 export class BasicAnalyzer {
   private fileManager = new FileManager();
