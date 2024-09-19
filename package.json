@@ -1,7 +1,7 @@
 {
   "name": "@techfever/labinsight",
   "description": "A smart code analysis tool for all your project needs",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "dist/bin/labinsight.js",
   "private": false,
   "repository": {

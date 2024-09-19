@@ -117,7 +117,7 @@ export class ReportManager {
     const now = new Date();
     const formattedDate = now.toISOString().replace(/:/g, "-");
     const reportName = `${id}.json`;
-    const reportsPath = path.join(process.cwd(), "reports", type, "json");
+    const reportsPath = path.join(process.cwd(), "reports");
 
     const configManager = new ArgManager();
     const args = configManager.getArgs();

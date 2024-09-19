@@ -1,5 +1,12 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.6 - 2024-09-19
+
+### Fixed
+
+- **Reports path issue**: The path of reports generation was redundant. He is now normalized.
+
+
 ## Version 0.1.5 - 2024-09-19
 
 ### Refactoring
