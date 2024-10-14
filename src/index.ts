@@ -9,3 +9,14 @@ export * from "./types/config.type";
 
 export * from "./cli/analyzeCommand";
 export * from "./cli/initCommand";
+
+export * from "./core/analyzers/basicAnalyzer";
+export * from "./core/analyzers/deepAnalyzer";
+export * from "./core/analyzers/dependencyAnalyzer";
+
+export * from "./core/factories/analyzerFactory";
+export * from "./core/factories/reportFactory";
+
+export * from "./languages/ts/tsRules";
+export * from "./languages/js/jsRules";
+export * from "./languages/python/pyRules";

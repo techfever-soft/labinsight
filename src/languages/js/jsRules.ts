@@ -2,6 +2,8 @@ import { JSClassCasingRule } from "./rules/casing/jsClassCasingRule";
 import { JSMethodCasingRule } from "./rules/casing/jsMethodCasingRule";
 import { JSParameterCasingRule } from "./rules/casing/jsParameterCasingRule";
 import { JSPropertyCasingRule } from "./rules/casing/jsPropertyCasingRule";
+import { JSLimitRecursionDepthRule } from "./rules/limit/jsLimitRecursionDepthRule";
+import { JSLimitTernaryOperatorRule } from "./rules/limit/jsLimitTernaryOperatorRule";
 import { JSMaxArrayLengthRule } from "./rules/max/jsMaxArrayLengthRule";
 import { JSMaxFunctionLinesRule } from "./rules/max/jsMaxFunctionLinesRule";
 import { JSMaxLinesRule } from "./rules/max/jsMaxLinesRule";
@@ -29,8 +31,8 @@ export const jsRules: { [ruleName: string]: any } = {
   "js.casing-property": JSPropertyCasingRule,
 
   // Limit rules
-  "js.limit-recursion-depth": null, // Ajout de la règle en limitant la récursion
-  "js.limit-ternary-operator": null, // Limite l’utilisation d’opérateurs ternaires complexes
+  "js.limit-recursion-depth": JSLimitRecursionDepthRule,
+  "js.limit-ternary-operator": JSLimitTernaryOperatorRule,
 
   // No rules
   "js.no-global-state": null, // Empêche l’utilisation de l’état global

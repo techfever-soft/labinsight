@@ -20,8 +20,8 @@
     "logs",
     "bin",
     "docs",
-    "src",
-    "tests"
+    "tests",
+    "coverage"
   ],
   "ignoredFiles": [
     ".labinsight",

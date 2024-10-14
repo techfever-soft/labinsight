@@ -21,7 +21,7 @@ export class PyDirectoryAnalyzer {
       }
 
       execFile(
-        "python3",
+        "python",
         [scriptPath, filePath, tempOutputPath],
         (error, stdout, stderr) => {
           if (error) {
