@@ -163,7 +163,7 @@ export class AnalyzeCommand {
       console.log(chalk.blue("Enjoying LabInsight ? We value your feedback !"));
       console.log(
         chalk.blue("Please leave a review here: ") +
-          chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
+        chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
       );
     } catch (error) {
       console.error(
@@ -193,7 +193,7 @@ export class AnalyzeCommand {
       console.log(chalk.blue("Enjoying LabInsight ? We value your feedback !"));
       console.log(
         chalk.blue("Please leave a review here: ") +
-          chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
+        chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
       );
     } catch (error) {
       console.error("An error occurred while performing basic analysis", error);
@@ -223,10 +223,10 @@ export class AnalyzeCommand {
       console.log(chalk.blue("Enjoying LabInsight ? We value your feedback !"));
       console.log(
         chalk.blue("Please leave a review here: ") +
-          chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
+        chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
       );
     } catch (error) {
-      console.error("An error occurred while performing deep analysis", error);
+      console.error(chalk.red("An error occurred while performing deep analysis", error));
     }
   }
 
@@ -256,7 +256,7 @@ export class AnalyzeCommand {
       console.log(chalk.blue("Enjoying LabInsight ? We value your feedback !"));
       console.log(
         chalk.blue("Please leave a review here: ") +
-          chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
+        chalk.underline("https://forms.gle/uEKij6RwHaucdpQ8A")
       );
     } catch (error) {
       console.error("An error occurred while performing full analysis", error);

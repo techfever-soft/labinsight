@@ -4,7 +4,9 @@ import { AnalyzeCommand } from "../cli/analyzeCommand";
 import { InitCommand } from "../cli/initCommand";
 import { program } from "commander";
 
-program.version("0.0.9");
+const packageJson = require("../../package.json");
+
+program.version(packageJson.version);
 
 /**
  * Initialize a new .labinsight file

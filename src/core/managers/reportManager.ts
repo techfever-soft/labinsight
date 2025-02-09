@@ -56,6 +56,7 @@ export class ReportManager {
       __dirname,
       "..",
       "..",
+      "src",
       "templates",
       "report.hbs"
     );

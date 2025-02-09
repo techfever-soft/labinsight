@@ -1,5 +1,12 @@
 ![](https://firebasestorage.googleapis.com/v0/b/lab-insight.appspot.com/o/Frame%203.png?alt=media&token=a104bd9c-f7bd-45ee-83d0-5049b0d3cf4d)
 
+## Version 0.1.8 - 2025-02-09
+
+### Fixed 
+
+- **Python script path**: Python script path was wrong so Python analysis can work now.
+- **Template path**: HTML Template path was wrong so HTML reports can work now.
+
 ## Version 0.1.7 - 2024-10-14
 
 ### Fixed
